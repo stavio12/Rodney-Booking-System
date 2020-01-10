@@ -147,16 +147,16 @@ text-align: center;
     transition: 2s ease-in-out;
   }
   
-  .btn:hover {
+  .btn, .btnsumbit:hover {
     transition: 3s ease-in-out;
     background: #27ae60DA;
   }
   
-  .btn:hover svg {
+  .btn, .btnsumbit:hover svg {
     stroke-dashoffset: -480;
   }
   
-  .btn span {
+  .btn span, .btnsumbit span {
     color: white;
     font-size: 18px;
     font-weight: 100;
