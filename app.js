@@ -1,51 +1,54 @@
+$(document).ready(()=>{
+    $("#angle, #submit").hide();
 
-    /*--------------------Navigation----------*/
-      $(document).ready(()=> {
-        $(".fa-bars").click(()=> {
-            console.log("hello")
-            $("#head").toggleClass('active')
-        })
-        
+    $("#next").click(()=> {
+        $("#angle, #submit").show();
+
     })
-
-
-
-              /*--------------------Displaying Calender---------- */
-
-          
-              $(document).ready(()=>{
-                $("#calendar").hide();
-
-                $(".select > img").click(()=> {
-                    $("#calendar").show();
-
-                })
-                
-            })
-        
-
-
-            /*--------------------Displaying Time---------- */
-            
-
-            $(document).ready(()=>{
-              $("#time").hide();
-
-              $("td div").click(()=> {
-                  $("#time").show();
-                  
-              });
-          
-              
-          })
-      
-
-              
-              
-
-
-
     
+})
+
+
+
+
+
+const signup = document.querySelector('#signup');
+const next = document.querySelector('#next');
+const Form = document.querySelector('form');
+
+const calander = document.querySelector('#calander');
+const Time = document.querySelector('#time');
+const qDay = document.querySelector('.day');
+const qMonth = document.querySelector('.month');
+const Current = document.querySelector('#current-date');
+const qDate = document.querySelector('.date');
+const angle = document.querySelector('.angle');
+
+
+
+
+
+
+
+next.addEventListener('click', disappear);
+
+function disappear(e){
+    e.preventDefault();
+    signup.style.display = 'none';
+
+    calander.style.display= 'block';
+    qMonth.style.display= 'block';
+    Time.style.display= 'block';
+    qDay.style.display= 'block';
+    qDate.style.display= 'block';
+    current.style.display= 'block';
+    move.style.display= 'block';
+    angle.style.display = 'block';
+}
+
+
+
+
           /*--------------------Calendar Display---------- */
 
     
@@ -53,7 +56,7 @@
           
           var Gdate = new Date();
           
-        document.querySelector("#calendar").onload=renderDate();
+        Form.onload=renderDate();
 
           function renderDate(){
             
@@ -61,13 +64,9 @@
 
           var Gmonth = Gdate.getMonth();
           
-          var month = document.querySelector(".month");
-
           var Gday = Gdate.getDay();
 
           var year = Gdate.getFullYear();
-
-          var day = document.querySelector(".day"); 
           
           
           
@@ -104,7 +103,7 @@
             m[11] = "December";
 
            Gmonth = m[Gdate.getMonth()];
-           month.innerHTML = Gmonth + ' , ' + Gdate.getFullYear();  
+           qMonth.innerHTML = Gmonth + ' , ' + Gdate.getFullYear();  
           }          
        Month();
 
@@ -128,7 +127,7 @@
   weekday[6] = "Saturday";
 
   var n = weekday[d.getDay()];
- day.innerHTML = n + " , " + Gmonth + " , " + d.getDate();
+  qDay.innerHTML = n + " , " + Gmonth + " , " + d.getDate();
 }
 Day();
 
@@ -165,8 +164,21 @@ function moveDate(rod){
   Gdate.setMonth(Gdate.getMonth() + 1);
 }
 
+
 renderDate();
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
