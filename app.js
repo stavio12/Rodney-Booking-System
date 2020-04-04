@@ -1,122 +1,72 @@
-$(document).ready(()=>{
-    $("#angle, #submit").hide();
+$(document).ready(function() {
+  $(".time").click(function () {
+      $(this).addClass("active");
+      $(".time").not(this).removeClass("active");
+  });
+  
+  });
 
-    $("#next").click(()=> {
-        $("#angle, #submit").show();
-
-    })
+  $(document).ready(function() {
+    $("td").click(function () {
+        $(this).css({"width":"2em",
+        "background-color": "#D3D3D3"})
+        $("td").not(this).css({"width":"",
+        "background-color": ""});
+    });
     
-})
+    });
+
+
+
+const currentDate = document.querySelector('#calendar'),
+currentTime = document.querySelector('#time'),
+sendBtn = document.querySelector('#sendBtn'),
+currentDay = document.querySelector('#day')
 
 
 
 
 
-const signup = document.querySelector('#signup');
-const next = document.querySelector('#next');
-const Form = document.querySelector('form');
-
-const calander = document.querySelector('#calander');
-const Time = document.querySelector('#time');
-const qDay = document.querySelector('.day');
-const qMonth = document.querySelector('.month');
-const Current = document.querySelector('#current-date');
-const qDate = document.querySelector('.date');
-const angle = document.querySelector('.angle');
+let today = new Date();
+let currentMonth = today.getMonth();
+let currentYear = today.getFullYear();
 
 
-
-
-
-
-
-next.addEventListener('click', disappear);
-
-function disappear(e){
-    e.preventDefault();
-    signup.style.display = 'none';
-
-    calander.style.display= 'block';
-    qMonth.style.display= 'block';
-    Time.style.display= 'block';
-    qDay.style.display= 'block';
-    qDate.style.display= 'block';
-    current.style.display= 'block';
-    move.style.display= 'block';
-    angle.style.display = 'block';
-}
-
-
-
-
-          /*--------------------Calendar Display---------- */
-
-    
-          /*--------------------Calling and assigning variables---------- */
-          
-          var Gdate = new Date();
-          
-        Form.onload=renderDate();
-
-          function renderDate(){
-            
-            Gdate.setDate(1);
-
-          var Gmonth = Gdate.getMonth();
-          
-          var Gday = Gdate.getDay();
-
-          var year = Gdate.getFullYear();
-          
-          
-          
-          var enddate = new Date(               
-            Gdate.getFullYear(),
-            Gdate.getMonth() + 1,
-             0
-
-          ).getDate();
-      
-          var prevdate = new Date(
-            Gdate.getFullYear(),
-            Gdate.getMonth(), 0
-          ).getDate();
- 
-        var today = new Date();
-
-          
-
-          /*--------------------Month Display---------- */
-          function Month () {
-            var m = new Array();
-            m[0] = "January" ;
-            m[1] = "February";
-            m[2] = "March";
-            m[3] = "April";
-            m[4] = "May";
-            m[5] = "June";
-            m[6] = "July";
-            m[7] = "August";
-            m[8] = "September";
-            m[9] = "October";
-            m[10] = "November";
-            m[11] = "December";
-
-           Gmonth = m[Gdate.getMonth()];
-           qMonth.innerHTML = Gmonth + ' , ' + Gdate.getFullYear();  
-          }          
-       Month();
+let months = [
+  "January",
+  "Feburary",
+  "March", 
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October", 
+  "November", 
+  "December"
+]
 
 
 
 
 
-           /*--------------------Day Display---------- */
+let monthAndYear = document.querySelector("#month");
+
+showCalendar(currentMonth, currentYear);
+
+function showCalendar(month,year){
+  let firstDay = new Date(year, month).getDay();
+  let daysInMonth = 32 - new Date(month, year, 32).getDate();
+
+  let tbl =document.querySelector('#calendar');
+
+  tbl.innerHTML = "";
+
+  monthAndYear.innerHTML = months[month] + ", " + year
 
 
-
- function Day() {
-  var d = new Date();
+function Day() {
   var weekday = new Array(7);
   weekday[0] = "Sunday";
   weekday[1] = "Monday";
@@ -126,60 +76,150 @@ function disappear(e){
   weekday[5] = "Friday";
   weekday[6] = "Saturday";
 
-  var n = weekday[d.getDay()];
-  qDay.innerHTML = n + " , " + Gmonth + " , " + d.getDate();
+  var n = weekday[today.getDay()];
+  currentDay.innerHTML = n + " , " + months[month] + " , " + today.getDate();
 }
-Day();
+Day()
 
 
 
-var cells = "";
+  let date = 1;
 
-for( x = Gday; x > 0; x--){
-    cells+= "<div class='prevDate'>" + (prevdate - x + 1) + "</div>";
+  for(let i = 0; i < 6; i++){
+    let row = document.createElement('tr');
+    for(let j = 0; j< 7; j++){      
+      if(i === 0 && j < firstDay){
+        let cell =document.createElement('td');
+        let cellText = document.createTextNode("")
+            cell.appendChild(cellText);
+            row.appendChild(cell);
+      }
+
+      else if(date > daysInMonth){
+ break;
+      }
+
+      else{
+        let cell =document.createElement('td');
+        let cellText = document.createTextNode(date);
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+      }
+
+      date++
+
+    }
+    tbl.appendChild(row);
+
+  }
 }
 
 
-for (i = 1; i <= enddate; i++ ){
+
+
+
+function previous(){
+  currentYear = (currentMonth === 0)? currentYear -1: currentYear
+  currentMonth = currentMonth === 0? 11 : currentMonth -1
+  showCalendar(currentMonth, currentYear);
+}
+
+
+function next(){
+  currentYear = currentMonth === 11 ? currentYear + 1: currentYear
+  currentMonth = (currentMonth + 1) % 12
+  showCalendar(currentMonth, currentYear);
+}
+
+
+
+
+
+
+
+
+eventListener();
+
+function eventListener(){
   
-  if (i == today.getDate() && Gdate.getMonth() == today.getMonth()) cells += "<div class='today'>" + i + "</div>";
-  else
-      cells += "<div>" + i + "</div>";
-}
- document.getElementsByClassName("days")[0].innerHTML = cells;
+  currentDate.addEventListener('click', selectedDay);  
 
-}
+  currentTime.addEventListener('click', selectedTime);  
 
 
-
-
-/*--------------------Toggling between Prev and Next Month---------- */
-
-function moveDate(rod){
-  if (rod == "prev"){
-    Gdate.setMonth(Gdate.getMonth() - 1);
-  } 
-
-  else if(rod == "next") {
-  Gdate.setMonth(Gdate.getMonth() + 1);
-}
-
-
-renderDate();
 }
 
 
 
+function selectedDay(dated){
+  dates= dated.target.innerText;
+
+  currentDay.innerHTML = dates + " / "  + currentMonth + " / "+ currentYear
+
+  return  dates.selectedTDay
+}
+
+// currentTime = document.querySelector('#time'),
+// sendBtn = document.querySelector('#sendBtn'),
+// currentDay = document.querySelector('#day')
+
+
+
+
+function selectedTime(timed){
+
+
+  timer= timed.target.innerText;
+
+  return timer.selectedTDay
+
+
+
+
+
+}
+
+
+
+
+  var firebaseConfig = {
+    apiKey: "AIzaSyDRiP6fT9F-8c5z054E9cOqsep_s0ZgUk4",
+    authDomain: "rodney-ticketing.firebaseapp.com",
+    databaseURL: "https://rodney-ticketing.firebaseio.com",
+    projectId: "rodney-ticketing",
+    storageBucket: "rodney-ticketing.appspot.com",
+    messagingSenderId: "423709569593",
+    appId: "1:423709569593:web:37fd39d2dbbd18d1b613e8",
+    measurementId: "G-THKT90Y1SY"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+const database = firebase.database();
+const rootRef = database.ref('Session Booking');
+
+
+function sendSession(){
+   const Id = rootRef.push().key
+  rootRef.child(Id).set({
+    Fname : document.querySelector("#fname").value,
+    Lname : document.querySelector("#lname").value,
+    Email : document.querySelector("#email").value,
+    Telephone : document.querySelector("#tel").value,
+    Date: `${dates} / ${currentMonth} / ${currentYear}` ,
+    Time: `${timer}` 
+  });
+
+
+  form = document.querySelector("#form")
+  
+  
+  form.reset()
+
+}  
 
 
 
 
 
 
-
-
-
-
-
-
-            

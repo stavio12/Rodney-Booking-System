@@ -4,168 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="./bootstrap.min.css">
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src = "jquery-3.4.1.min.js"></script>
     <link rel="logo icon" href="logo.png">
-    <title>Bookings - Rodney Quarcoo | Documentary Photographer</title>
+    <title>Rodney Quarcoo | Documentary Photographer</title>
 </head>
 <body>
-    <div id="container">
-      <!------------------->
+<div class="container">
 
-        <div id="intro">
-            <h1 align="center">Make An Appointment</h1>
-        </div>
-        
-        <div id="select" align="center">
-            <h1>What would you like to book me for?</h1>
-           
-            <div class="select">
-               <img src="photo.jpg" alt="book Photography" />
-               <p>Photography</p>   
-           </div>
-         
-              <div class="select" >
-               <img src="photo.jpg" alt="book Photography"/>
-               <p>Videography</p> 
-              </div>
-    
-           </div>
+<nav class="nav" id="welcome">
 
-           <div id="register">
-               <h1> <span class="book">Book</span> Appointment</h1>
-           </div>
-           
-
-
-
-
-
-
-           <form >
-
-            <div id="signup" align='center'>
-               Name <br> 
-                <input type="text" name="Name" id="name" placeholder="Enter Your Full Name">
-              <br>
-                Email <br> 
-                <input type="email" name="Name" id="email" placeholder="Enter Your Email">
- 
-                <br>
-                Phone Number <br> 
-                <input type="number" name="Name" id="phone" placeholder="Enter Your Number">
- 
-                <br>
-                Gender <br>
-                <select name="" id="gender" required>
-                    <option value="" disabled>Select Your Gender</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                </select>
-                <br>
-
-                <div id="next">
-                    <div class="center">
-                      <button class="btn">
-                        <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
-                          <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
-                          <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
-                        </svg>
-                        <span >Next</span>
-                      </button>
-                    </div>
-            </div>
-
-
-        </div>
-
-
-
-
-
-              <div id="Current-date">
-                  <h1 class="date">Select Date & Time</h1>
-                  <h2 class="month" style="font-weight: normal;">Today`s Date
-                      </h2>
-                      <div id="angle">
-                        <i  class="fa fa-angle-left angle" aria-hidden="true" onclick="moveDate('prev')" ></i>
-                        <i  class="fa fa-angle-right angle" aria-hidden="true" onclick="moveDate('next')"></i>  
-                      </div>
-
-                    <h2 class= "day" style="font-weight: normal;">Thursday, September 2019</h2>
-              </div>
-
-              <div id="calander" align="left">
-
-              <div class="week">
-                <th > SUN</th>
-                <th > MON</th>
-                <th > TUE</th>
-                <th > WED</th>
-                <th > THU</th>
-                <th >FRI</th>
-                <th > SAT</th>
-            </div>
-            
-            <div class="days">
-             
-            </div>
-              </div>
-
-              <div id="time">
-                <p>
-                10:00 am
-            </p>
- 
-                <p>
-                10:30 am
-            </p>
- 
-            <p> 
-                11:00 am
-            </p>
-             
-            <p>    
-                11:30 am
-            </p>
- 
-            <p>    
-                    12:00 pm
-                </p>
-                
-                <p>    
-                        12:30 pm
-                    </p>
- 
-                    <p>    
-                            13:00 pm
-                        </p>
- 
-                        <p>    
-                                13:30 pm
-                            </p>
-            
-            </div>
-
-            <div id="submit">
-                <div class="center">
-                  <button class="btnsumbit">
-                    <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
-                      <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
-                      <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
-                    </svg>
-                    <span>Submit</span>
-                  </button>
-                </div>
-        </div>
-
-
-           </form>
-
-
+    <div class="row ml-5 text-white">
+            <div class="col-12 col-sm-6 col-lg-12  name">
+        <h1>Rodney Quarcoo </h1>
+        <h5 class="mr-md-5 pr-md-5 pl-md-5">Photography</h5>
     </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-4  col-md-12">
+    <ul class="nav ml-5 pl-sm-5" id="nav">
+        
+        <li class="nav-item">
+          <a class="nav-link" href="./albums.html">Albums</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./session.html">Book Session</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Events</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./about.html">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./contact.html">Contact</a>
+          </li>
+      </ul>
+    </div>
+</div>
+
+</nav>
+</div>
+
+
 </body>
-<script src="app.js"></script>
-<script src="verify.js"></script>
+<script type="text/javascript" src="./jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="./bootstrap.bundle.min.js"></script>
+
+<!-- <script src="app.js" type="text/babel"></script> -->
 </html>

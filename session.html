@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="session.css">
+    <link rel="logo icon" href="logo.png">
+    <title>Rodney Quarcoo | Albums</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+       <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital@1&display=swap" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-database.js"></script>
+    
+</head>
+
+
+
+<body>
+
+<div class="text-center" id="logo">
+<img src="./logo 1.png" alt="Rodney" class="img-fluid" style="width: 10em;">
+<h1 class="h4">Rodney Quarcoo <br> <small>Photography</small></h1>
+</div>
+
+<div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav nav-tabs">
+        <ul class="navbar-nav nav-tabs">
+          <li class="nav-item">
+              <a class="nav-link" href="./index.html">Home</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="./albums.html">Albums</a>
+          </li> 
+            <li class="nav-item">
+            <a class="nav-link active" href="./session.html">Book Session</a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Events</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="./about.html">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./contact.html">Contact</a>
+          </li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+<form id="form" class="text-center" action="#">
+
+  <h1>Book a Session</h1>
+
+<section id="details" class="jumbotron bg-dark text-white m-5">
+  <div class="row ">
+  <div class="col-12 col-md-6">
+    <div class="form-group">
+     <label for="Fname">First Name</label>
+     <input type="text" id="fname" class="form-control" placeholder="First Name" required>
+    </div>
+  </div>
+
+
+    <div class="col-12 col-md-6">
+      <div class="form-group">
+          <label for="lname">Last Name*</label>
+          <input type="text" id="lname" class="form-control" placeholder="Last Name" required>
+      </div>
+</div>
+
+      <div class="col-12 col-md-6">
+      <div class="form-group">
+          <label for="email">Email Address*</label>
+          <input type="email" id="email" class="form-control" placeholder="Email address" required>
+      </div>
+</div>
+
+<div class="col-12 col-md-6">
+  <div class="form-group">
+      <label for="telephone">Telephone*</label>
+      <input type="tel" id="tel" class="form-control" placeholder="(+00)000-0000" required>
+  </div>
+</div>
+   </div>
+  </section>
+   
+   
+  <section id="date" class="jumbotron bg-light p-0 ">
+    <div>
+ <h3 class="text-center p-5">Select Date & Time</h3>
+
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-6 justify-content-center">
+
+</div>
+</div>
+
+
+<div class="row">
+
+  <div class="col-12 col-md-6">
+    <h4 id="month" class="float-left p-0 p-md-2.5"> feb, 2020</h4>  
+ <h4 id="day" class="float-right p-0 p-md-2.5"> Saturday, may, 4</h4>
+
+ <div class="col-12 p-5 m-md-5 col-sm-6 col-md-9 ml-sm-5">
+  <button onclick="previous()" class="btn btn-primary btn-lg"> <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+  </button>
+  <button onclick="next()" class="btn btn-primary btn-lg"> <i class="fa fa-arrow-circle-right" aria-hidden="true"></i> </button>
+</div>
+ <table class="table table-borderless">
+  <thead>
+    <tr>
+      <th class="active">Sun</th>
+      <th>Mon</th>
+      <th>Tue</th>
+      <th>Wed</th>
+      <th>Thu</th>
+      <th>Fri</th>
+      <th>Sat</th>
+    </tr>
+  </thead>
+  
+  <tbody id="calendar"></tbody>
+</table>
+</div>
+
+
+<div id="time" class="col-12 col-md-6">
+
+  <div class="list-group text-center">
+  <h6 class="list-group-item list-group-item-action time "> 8:00 AM  </h6>
+  <h6 class="list-group-item list-group-item-action time">10:00 AM</h6>
+  <h6 class="list-group-item list-group-item-action time">12:00 PM</h6>
+  <h6 class="list-group-item list-group-item-action time"> 2:00 PM</h6>
+  <h6 class="list-group-item list-group-item-action time"> 4:00 PM</h6>
+</div>
+</div>
+</div>
+<button onclick="sendSession()" id="sendBtn" type="submit" class="btn btn-primary btn-lg">Submit</button>
+
+  </section> 
+
+  </form>
+
+
+
+
+  <footer class="bg-light p-2">
+    <div class="row">
+    <div class="col-12 col-md-6">
+        <ul class="nav">
+            <li><a class="nav-link" href="#"><i class="fa fa-facebook" aria-hidden="true"></i>
+              Facebook</a></li>
+            <li><a class="nav-link" href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+            <li><a class="nav-link" href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+            <li><a class="nav-link" href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+          </ul>
+    </div>
+
+
+    <div class="col-12 col-md-6">
+        <ul class="list-inline">
+            <li class="list-inline-item">&copy; 2020 Rodney Quarcoo, Photography.</li>
+            <li class="list-inline-item">All rights reserved.</li>
+            <li class="list-inline-item"><a href="#">Terms of use and privacy policy</a>.</li>
+          </ul>
+    </div>
+
+</div>
+</footer>
+
+</div>
+</body>
+<script type="text/javascript" src="./jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="./bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<!-- <script src="app.js" type="text/babel"></script> -->
+</html>

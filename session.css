@@ -1,0 +1,31 @@
+body{
+    font-family: 'Lora', serif;
+}
+
+#calendar td:hover{
+cursor: pointer;
+background-color: D3D3D3;
+}
+
+
+
+#time{
+   margin-top: 15em;
+}
+
+#time h6:hover{
+    cursor: pointer;
+  
+}
+
+
+#time h6:active{
+    width: 15em;
+  
+    }
+
+
+
+.nav-item{
+    padding:2em;
+}
