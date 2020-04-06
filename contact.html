@@ -48,7 +48,7 @@
                   <a class="nav-link" href="./session.html">Book Session</a>
                 </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Events</a>
+                <a class="nav-link" href="./events.html">Events</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="./about.html">About</a>
@@ -116,7 +116,7 @@
         </div>
 </div>
     </div>
-    <button onclick="sendMessage()" type="submit" class="btn btn-primary btn-lg">Submit</button>
+    <button id="sendMessage" type="submit" class="btn btn-primary btn-lg">Submit</button>
 
     </form>
 
@@ -149,39 +149,5 @@
 </body>
 <script type="text/javascript" src="./jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="./bootstrap.bundle.min.js"></script>
-
-<script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyDRiP6fT9F-8c5z054E9cOqsep_s0ZgUk4",
-      authDomain: "rodney-ticketing.firebaseapp.com",
-      databaseURL: "https://rodney-ticketing.firebaseio.com",
-      projectId: "rodney-ticketing",
-      storageBucket: "rodney-ticketing.appspot.com",
-      messagingSenderId: "423709569593",
-      appId: "1:423709569593:web:37fd39d2dbbd18d1b613e8",
-      measurementId: "G-THKT90Y1SY"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-  
-  const database =firebase.database();
-  const rootRef = database.ref('Messages');
-  
-  function sendMessage(){
-     const Id = rootRef.push().key
-    rootRef.child(Id).set({
-      Fname: document.getElementById('fname').value,
-      Lname: document.getElementById('lname').value,
-      Email: document.getElementById('email').value,
-      Telephone: document.getElementById('tel').value,
-      Subject: document.getElementById('subject').value,
-      Message: document.getElementById('message').value
-    });
- 
-    document.querySelector('#form').reset()
-  }
-  
-  </script>
-<!-- <script src="app.js" type="text/babel"></script> -->
+<script src="./config/config.js" type="module"></script>
 </html>
